@@ -4,18 +4,51 @@ var bio = {
     "name" : "Paulo Moreira",
     "role" : "Front-End Web Developer",
     "contacts" : {
-        "mobile": "N/A",
+        "mobile": "650-555-555",
         "email": "moreira.a.paulo@gmail.com",
         "github": "https://github.com/Draksuras",
         "location": "Winnipeg"
         },
     "welcomeMessage": "Welcome to my Resume",
-    "skills": ["TO", "fill", "out", "later"],
-    "biopic": "https:/notdoneyet",
-    //"display": function() {return 0;}
+    "skills": ["To", "fill", "out", "later"],
+    "biopic": "images/fry.jpg",
+    "display": function() {
+
+    	var formattedHTMLheaderName = HTMLheaderName.replace("%data%", bio.name);
+		var formattedHTMLheaderRole = HTMLheaderRole.replace("%data%", bio.role);
+		var formattedHTMLbioPic = HTMLbioPic.replace("%data%", bio.biopic);
+		var formattedHTMLwelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+		var formattedHTMLskills = HTMLskills.replace("%data%", bio.skills);
+
+
+		$("#header").prepend(formattedHTMLheaderRole);
+		$("#header").prepend(formattedHTMLheaderName);
+
+		for (generic in bio.contacts){
+
+			var formattedHTMLcontactGeneric = HTMLcontactGeneric.replace("%contact%", generic);
+			formattedHTMLcontactGeneric = formattedHTMLcontactGeneric.replace("%data%", bio.contacts[generic]);
+
+			$("#topContacts").append(formattedHTMLcontactGeneric);
+		}
+
+		$("#header").append(formattedHTMLbioPic);
+		$("#header").append(formattedHTMLwelcomeMsg);
+		$("#header").append(HTMLskillsStart);
+
+		for (var i = 0; i < bio.skills.length; i++){
+
+			$("#header").append(formattedHTMLskills);
+
+		}		
+
+
+	}
     
 
 }
+
+
 
 var education = {
 
@@ -74,3 +107,6 @@ var projects = {
 
     ]
 }
+
+
+bio.display();
