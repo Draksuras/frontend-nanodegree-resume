@@ -74,7 +74,7 @@ var education = {
 
     "display": function (){
 
-        $("#main").prepend(HTMLschoolStart);
+        $("#main").append(HTMLschoolStart);
         
 
         var formattedHTMLschoolName = HTMLschoolName.replace("%data%", education["schools"][0]["name"]);
@@ -99,18 +99,41 @@ var work = {
             "employer": "New Flyer",
             "title": "Customer Support Analyst",
             "location": "Winnipeg",
-            "dates": "Aug-2014 - PResent",
-            "description": "Analyzing data to gain insights in improving customer fleet's operations."
+            "dates": "2014 - Present",
+            "description": "Analyzing data to gain insights in improving customer's fleet operations."
         },
         {
             "employer": "Sequoia Energy",
             "title": "Resource Assessmennt Tech.",
             "location": "Winnipeg",
-            "dates": "2011-2014",
+            "dates": "2011 - 2014",
             "description": "Analyzed data for wind power site suitability."
         }
 
-    ]
+    ],
+
+    "display": function (){
+
+        $("#main").append(HTMLworkStart);
+
+        for(job in work["jobs"]){
+
+            var formattedHTMLworkEmployer = HTMLworkEmployer.replace("%data%", work["jobs"][job]["employer"]);
+            var formattedHTMLworkTitle = HTMLworkTitle.replace("%data%", work["jobs"][job]["title"]);
+            var formattedHTMLworkDates = HTMLworkDates.replace("%data%", work["jobs"][job]["dates"]);
+            var formattedHTMLworkLocation = HTMLworkLocation.replace("%data%", work["jobs"][job]["location"]);
+            var formattedworkDescription = HTMLworkDescription.replace("%data%", work["jobs"][job]["description"]);
+
+            $("#workExperience").append(formattedHTMLworkEmployer);
+            $("#workExperience").append(formattedHTMLworkTitle);
+            $("#workExperience").append(formattedHTMLworkDates);
+            $("#workExperience").append(formattedHTMLworkLocation);
+            $("#workExperience").append(formattedworkDescription);
+
+        }
+
+
+    }
 }
 
 var projects = {
@@ -129,4 +152,5 @@ var projects = {
 
 
 bio.display();
+work.display();
 education.display();
