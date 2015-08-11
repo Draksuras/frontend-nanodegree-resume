@@ -9,8 +9,8 @@ var bio = {
         "github": "https://github.com/Draksuras",
         "location": "Winnipeg"
         },
-    "welcomeMessage": "Welcome to my Resume",
-    "skills": ["To", "fill", "out", "later"],
+    "welcomeMessage": "Welcome to my online Résumé",
+    "skills": ["Data analysis", "Programming", "Gadget acquirer", "Capable learner"],
     "biopic": "images/fry.jpg",
     "display": function() {
 
@@ -18,7 +18,8 @@ var bio = {
 		var formattedHTMLheaderRole = HTMLheaderRole.replace("%data%", bio.role);
 		var formattedHTMLbioPic = HTMLbioPic.replace("%data%", bio.biopic);
 		var formattedHTMLwelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
-		var formattedHTMLskills = HTMLskills.replace("%data%", bio.skills);
+
+		
 
 
 		$("#header").prepend(formattedHTMLheaderRole);
@@ -30,6 +31,7 @@ var bio = {
 			formattedHTMLcontactGeneric = formattedHTMLcontactGeneric.replace("%data%", bio.contacts[generic]);
 
 			$("#topContacts").append(formattedHTMLcontactGeneric);
+            $("#footerContacts").append(formattedHTMLcontactGeneric);
 		}
 
 		$("#header").append(formattedHTMLbioPic);
@@ -38,9 +40,15 @@ var bio = {
 
 		for (var i = 0; i < bio.skills.length; i++){
 
+            var formattedHTMLskills = HTMLskills.replace("%data%", bio.skills[i]);
 			$("#header").append(formattedHTMLskills);
 
-		}		
+		}
+
+
+
+
+
 
 
 	}
@@ -110,14 +118,14 @@ var work = {
             "title": "Customer Support Analyst",
             "location": "Winnipeg, MB",
             "dates": "2014 - Present",
-            "description": "Analyzing data to gain insights in improving customer's fleet operations."
+            "description": "Analyzed vehicle data to obtain insights for improving customer's fleet operations."
         },
         {
             "employer": "Sequoia Energy",
             "title": "Resource Assessmennt Tech.",
             "location": "Winnipeg, MB",
             "dates": "2011 - 2014",
-            "description": "Analyzed data for wind power site suitability."
+            "description": "Analyzed data from sensor towers to determine wind power site suitability."
         }
 
     ],
