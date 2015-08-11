@@ -24,7 +24,7 @@ var bio = {
 		$("#header").prepend(formattedHTMLheaderRole);
 		$("#header").prepend(formattedHTMLheaderName);
 
-		for (generic in bio.contacts){
+		for (var generic in bio.contacts){
 
 			var formattedHTMLcontactGeneric = HTMLcontactGeneric.replace("%contact%", generic);
 			formattedHTMLcontactGeneric = formattedHTMLcontactGeneric.replace("%data%", bio.contacts[generic]);
@@ -69,12 +69,12 @@ var education = {
             "title": "Introduction to Programming",
             "school": "Rice university",
             "date": 2014,
-            "url": "edx.org"
+            "url": "http://edx.org"
     }],
 
     "display": function (){
 
-        $("#main").append(HTMLschoolStart);
+        $("#education").append(HTMLschoolStart);
         
 
         var formattedHTMLschoolName = HTMLschoolName.replace("%data%", education["schools"][0]["name"]);
@@ -83,12 +83,22 @@ var education = {
         var formattedHTMLschoolLocation = HTMLschoolLocation.replace("%data%", education["schools"][0].location);
         var formattedHTMLschoolMajor = HTMLschoolMajor.replace("%data%", education["schools"][0].majors);
 
-        $("#education").append(formattedHTMLschoolName);
-        $("#education").append(formattedHTMLschoolDegree);
-        $("#education").append(formattedHTMLschoolDates);
-        $("#education").append(formattedHTMLschoolLocation); 
-        $("#education").append(formattedHTMLschoolMajor);
-        
+        $(".education-entry").append(formattedHTMLschoolName + formattedHTMLschoolDegree);
+        $(".education-entry").append(formattedHTMLschoolDates);
+        $(".education-entry").append(formattedHTMLschoolLocation); 
+        $(".education-entry").append(formattedHTMLschoolMajor);
+
+        $(".education-entry").append(HTMLonlineClasses);
+
+        var formattedHTMLonlineTitle = HTMLonlineTitle.replace("%data%", education["onlineCourses"][0].title);
+        var formattedHTMLonlineSchool = HTMLonlineSchool.replace("%data%", education["onlineCourses"][0].school);
+        var formattedHTMLonlineDates = HTMLonlineDates.replace("%data%", education["onlineCourses"][0].date);
+        var formattedHTMLonlineURL = HTMLonlineURL.replace("%data%", education["onlineCourses"][0].url);
+
+        $(".education-entry").append(formattedHTMLonlineTitle + formattedHTMLonlineSchool);
+        $(".education-entry").append(formattedHTMLonlineDates);
+        $(".education-entry").append(formattedHTMLonlineURL);
+
     }
 }
 
@@ -114,9 +124,9 @@ var work = {
 
     "display": function (){
 
-        $("#main").append(HTMLworkStart);
+        $("#workExperience").append(HTMLworkStart);
 
-        for(job in work["jobs"]){
+        for(var job in work["jobs"]){
 
             var formattedHTMLworkEmployer = HTMLworkEmployer.replace("%data%", work["jobs"][job]["employer"]);
             var formattedHTMLworkTitle = HTMLworkTitle.replace("%data%", work["jobs"][job]["title"]);
@@ -124,11 +134,10 @@ var work = {
             var formattedHTMLworkLocation = HTMLworkLocation.replace("%data%", work["jobs"][job]["location"]);
             var formattedworkDescription = HTMLworkDescription.replace("%data%", work["jobs"][job]["description"]);
 
-            $("#workExperience").append(formattedHTMLworkEmployer);
-            $("#workExperience").append(formattedHTMLworkTitle);
-            $("#workExperience").append(formattedHTMLworkDates);
-            $("#workExperience").append(formattedHTMLworkLocation);
-            $("#workExperience").append(formattedworkDescription);
+            $(".work-entry").append(formattedHTMLworkEmployer + formattedHTMLworkTitle);
+            $(".work-entry").append(formattedHTMLworkDates);
+            $(".work-entry").append(formattedHTMLworkLocation);
+            $(".work-entry").append(formattedworkDescription);
 
         }
 
@@ -143,7 +152,7 @@ var projects = {
 
             "title": "Asteroids Game",
             "dates": "2014",
-            "description": "Asteroids game implemented in Python",
+            "description": "Asteroids game implemented in Python.",
             "images": "http://needstobefilledout"
         }
 
@@ -151,19 +160,19 @@ var projects = {
 
     "display": function (){
 
-        $("#main").append(HTMLprojectStart);
+        $("#projects").append(HTMLprojectStart);
 
-        for(project in projects["projects"]){
+        for(var project in projects["projects"]){
 
             var formattedHTMLprojectTitle = HTMLprojectTitle.replace("%data%", projects["projects"][project]["title"]);
             var formattedHTMLprojectDates = HTMLprojectDates.replace("%data%", projects["projects"][project]["dates"]);
             var formattedHTMLprojectDescription = HTMLprojectDescription.replace("%data%", projects["projects"][project]["description"]);
             var formattedHTMLprojectImage = HTMLprojectImage.replace("%data", projects["projects"][project]["images"]);
 
-            $("#projects").append(formattedHTMLprojectTitle);
-            $("#projects").append(formattedHTMLprojectDates);
-            $("#projects").append(formattedHTMLprojectDescription);
-            $("#projects").append(formattedHTMLprojectImage);
+            $(".project-entry").append(formattedHTMLprojectTitle);
+            $(".project-entry").append(formattedHTMLprojectDates);
+            $(".project-entry").append(formattedHTMLprojectDescription);
+            $(".project-entry").append(formattedHTMLprojectImage);
 
 
         }
@@ -177,3 +186,5 @@ bio.display();
 work.display();
 projects.display();
 education.display();
+
+$("#mapDiv").append(googleMap);
