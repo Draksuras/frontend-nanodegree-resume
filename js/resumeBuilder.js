@@ -70,7 +70,26 @@ var education = {
             "school": "Rice university",
             "date": 2014,
             "url": "edx.org"
-    }]
+    }],
+
+    "display": function (){
+
+        $("#main").prepend(HTMLschoolStart);
+        
+
+        var formattedHTMLschoolName = HTMLschoolName.replace("%data%", education["schools"][0]["name"]);
+        var formattedHTMLschoolDegree = HTMLschoolDegree.replace("%data%", education["schools"][0].degree);
+        var formattedHTMLschoolDates = HTMLschoolDates.replace("%data%", education["schools"][0].dates);
+        var formattedHTMLschoolLocation = HTMLschoolLocation.replace("%data%", education["schools"][0].location);
+        var formattedHTMLschoolMajor = HTMLschoolMajor.replace("%data%", education["schools"][0].majors);
+
+        $("#education").append(formattedHTMLschoolName);
+        $("#education").append(formattedHTMLschoolDegree);
+        $("#education").append(formattedHTMLschoolDates);
+        $("#education").append(formattedHTMLschoolLocation); 
+        $("#education").append(formattedHTMLschoolMajor);
+        
+    }
 }
 
 var work = {
@@ -110,3 +129,4 @@ var projects = {
 
 
 bio.display();
+education.display();
