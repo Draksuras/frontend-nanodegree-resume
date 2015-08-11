@@ -56,7 +56,7 @@ var education = {
         {
 
             "name": "University of Manitoba",
-            "location": "Winnipeg",
+            "location": "Winnipeg, MB",
             "degree": "Science",
             "majors": ["Chemistry"],
             "dates": 2011,
@@ -98,14 +98,14 @@ var work = {
         {
             "employer": "New Flyer",
             "title": "Customer Support Analyst",
-            "location": "Winnipeg",
+            "location": "Winnipeg, MB",
             "dates": "2014 - Present",
             "description": "Analyzing data to gain insights in improving customer's fleet operations."
         },
         {
             "employer": "Sequoia Energy",
             "title": "Resource Assessmennt Tech.",
-            "location": "Winnipeg",
+            "location": "Winnipeg, MB",
             "dates": "2011 - 2014",
             "description": "Analyzed data for wind power site suitability."
         }
@@ -147,10 +147,33 @@ var projects = {
             "images": "http://needstobefilledout"
         }
 
-    ]
+    ],
+
+    "display": function (){
+
+        $("#main").append(HTMLprojectStart);
+
+        for(project in projects["projects"]){
+
+            var formattedHTMLprojectTitle = HTMLprojectTitle.replace("%data%", projects["projects"][project]["title"]);
+            var formattedHTMLprojectDates = HTMLprojectDates.replace("%data%", projects["projects"][project]["dates"]);
+            var formattedHTMLprojectDescription = HTMLprojectDescription.replace("%data%", projects["projects"][project]["description"]);
+            var formattedHTMLprojectImage = HTMLprojectImage.replace("%data", projects["projects"][project]["images"]);
+
+            $("#projects").append(formattedHTMLprojectTitle);
+            $("#projects").append(formattedHTMLprojectDates);
+            $("#projects").append(formattedHTMLprojectDescription);
+            $("#projects").append(formattedHTMLprojectImage);
+
+
+        }
+
+    }
+
 }
 
 
 bio.display();
 work.display();
+projects.display();
 education.display();
